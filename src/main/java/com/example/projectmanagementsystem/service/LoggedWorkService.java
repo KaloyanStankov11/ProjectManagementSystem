@@ -32,8 +32,8 @@ public class LoggedWorkService {
     public List<LoggedWorkDTO> getLastWeekLoggedWork(){
         AppUser user = userService.getUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         int day = LocalDate.now().getDayOfWeek().getValue();
-        LocalDate startDate = LocalDate.now().minusWeeks(1).minusDays(day-1);
-        LocalDate endDate = LocalDate.now().minusWeeks(1).plusDays(5-day);
+        LocalDate startDate = LocalDate.now().minusWeeks(1).minusDays(day);
+        LocalDate endDate = LocalDate.now().minusWeeks(1).plusDays(6-day);
         return loggedWorkRepository.getLoggedWorkByWorkerAndDateAfterAndDateBefore(user, startDate, endDate).stream().map(LoggedWork::toLoggedWorkDTO).toList();
     }
 

@@ -33,7 +33,7 @@ export class LoginComponent  implements OnInit, OnDestroy{
     }
     this.userService.login(this.loginFormGroup.get("username")?.value, this.loginFormGroup.get("password")?.value)
       .subscribe(data => {
-        this.userRole = data.authorities.find(it => it == "MANAGER") ? "MANAGER" : "WORKER"
+        this.userRole = data.authorities.find(it => it == "MANAGER" || it == "OWNER") ? "MANAGER" : "WORKER"
         this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
           this.router.navigate(['home']);
         });

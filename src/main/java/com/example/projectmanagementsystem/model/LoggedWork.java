@@ -38,6 +38,7 @@ public class LoggedWork extends _BaseEntity{
 
     public LoggedWorkDTO toLoggedWorkDTO(){
         return new LoggedWorkDTO(
+                this.id,
                 this.worker.getUsername(),
                 this.task.toTaskDTO(),
                 new TimeMeasure(this.loggedTimeNumber, this.loggedTimeUnit),

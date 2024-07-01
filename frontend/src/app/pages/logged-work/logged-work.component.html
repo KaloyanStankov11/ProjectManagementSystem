@@ -11,7 +11,7 @@
   </ng-container>
   <ng-container matColumnDef="TIME">
     <th *matHeaderCellDef mat-header-cell>Time</th>
-    <td *matCellDef="let logged" mat-cell>{{logged.loggedTimeNumber + " " + logged.loggedTimeUnit}}</td>
+    <td *matCellDef="let logged" mat-cell>{{logged.loggedTime.number + " " + logged.loggedTime.unit}}</td>
   </ng-container>
 <!--  <ng-container matColumnDef="TIME_LEFT">-->
 <!--    <th *matHeaderCellDef mat-header-cell>Time Left</th>-->
@@ -23,8 +23,8 @@
   </ng-container>
   <ng-container matColumnDef="ACTIONS">
     <th *matHeaderCellDef mat-header-cell>Actions</th>
-    <td *matCellDef="let task" mat-cell>
-      <button (click)="deleteLog()" mat-icon-button
+    <td *matCellDef="let logged" mat-cell>
+      <button (click)="deleteLog(logged)" mat-icon-button
               matTooltip="Delete log">
         <mat-icon color="primary">delete</mat-icon>
       </button>

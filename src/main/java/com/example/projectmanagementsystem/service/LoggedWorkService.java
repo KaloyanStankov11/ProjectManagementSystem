@@ -32,7 +32,7 @@ public class LoggedWorkService {
         return loggedWorkRepository.getLoggedWorkByTask(task).stream().map(LoggedWork::toLoggedWorkDTO).toList();
     }
 
-    public void addLoggedWork(LoggedWorkRequest loggedWorkDTO){
+    public List<LoggedWorkDTO> addLoggedWork(LoggedWorkRequest loggedWorkDTO){
         AppUser user = userService.getUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         Task task = taskRepository.getReferenceById(loggedWorkDTO.getTask().getId());
         LoggedWork loggedWork = new LoggedWork(
@@ -43,5 +43,10 @@ public class LoggedWorkService {
                 loggedWorkDTO.getDate()
         );
         loggedWorkRepository.save(loggedWork);
+        return loggedWorkRepository.getLoggedWorkByWorker(user).stream().map(LoggedWork::toLoggedWorkDTO).toList();
+    }
+
+    public void deleteLoggedWork(Long id){
+        loggedWorkRepository.deleteById(id);
     }
 }

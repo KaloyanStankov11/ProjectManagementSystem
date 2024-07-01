@@ -24,8 +24,13 @@ public class LoggedWorkController {
     }
 
     @PostMapping("/add-logged")
-    public ResponseEntity addLoggedWork(@RequestBody LoggedWorkRequest loggedWorkDTO){
-        loggedWorkService.addLoggedWork(loggedWorkDTO);
+    public ResponseEntity<List<LoggedWorkDTO>> addLoggedWork(@RequestBody LoggedWorkRequest loggedWorkDTO){
+        return ResponseEntity.ok().body(loggedWorkService.addLoggedWork(loggedWorkDTO));
+    }
+
+    @DeleteMapping("/delete-logged/{id}")
+    public ResponseEntity deleteLogged(@PathVariable Long id){
+        loggedWorkService.deleteLoggedWork(id);
         return ResponseEntity.ok().build();
     }
 }

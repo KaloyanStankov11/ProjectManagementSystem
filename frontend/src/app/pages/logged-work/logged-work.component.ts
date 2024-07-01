@@ -35,12 +35,18 @@ export class LoggedWorkComponent implements OnInit{
       .pipe(take(1))
       .subscribe(response =>{
         if(response){
-          this.loggedService.addLoggedWork(response).subscribe()
+          this.loggedService.addLoggedWork(response).subscribe(newData =>{
+            this.loggedWork = newData
+          })
         }
       })
   }
-  deleteLog() {
-
+  deleteLog(logged: LoggedWork) {
+    this.loggedService.deleteLoggedWork(logged.id).subscribe(() =>{
+      this.loggedService.getUserLoggedWork().subscribe(data =>{
+        this.loggedWork = data
+      })
+    })
   }
 
 }

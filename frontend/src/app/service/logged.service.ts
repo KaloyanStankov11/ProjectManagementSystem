@@ -20,4 +20,9 @@ export class LoggedService {
     const url = `${this.apiUrl}/add-logged`
     return this.http.post(url, loggedWork)
   }
+
+  deleteLoggedWork(id: number): Observable<any>{
+    const url = `${this.apiUrl}/delete-logged/${id}`
+    return this.http.delete(url)
+  }
 }

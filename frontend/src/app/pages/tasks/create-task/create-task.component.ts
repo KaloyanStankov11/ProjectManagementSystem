@@ -38,7 +38,7 @@ export class CreateTaskComponent implements OnInit{
     if(this.isEditMode){
       this.taskFormGroup.get("title")?.setValue(this.taskToEdit.caption)
       this.taskFormGroup.get("description")?.setValue(this.taskToEdit.description)
-      this.taskFormGroup.get("assignee")?.setValue(this.taskToEdit.assignee.username)
+      this.taskFormGroup.get("assignee")?.setValue(this.taskToEdit.assignee)
       this.taskFormGroup.get("project")?.setValue(this.taskToEdit.project)
       this.taskFormGroup.get("estimationTime")?.setValue(this.taskToEdit.estimatedTime.number + " " + this.taskToEdit.estimatedTime.unit)
       this.taskFormGroup.get("taskStatus")?.setValue(this.taskToEdit.taskStatus)

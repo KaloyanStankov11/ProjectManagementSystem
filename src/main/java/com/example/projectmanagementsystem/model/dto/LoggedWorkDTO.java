@@ -10,17 +10,26 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 public class LoggedWorkDTO {
-
+    private Long id;
     private String worker;
     private TaskDTO task;
     private TimeMeasure loggedTime;
     private LocalDate date;
 
-    public LoggedWorkDTO(String worker, TaskDTO task, TimeMeasure loggedTime, LocalDate date) {
+    public LoggedWorkDTO(Long id, String worker, TaskDTO task, TimeMeasure loggedTime, LocalDate date) {
+        this.id = id;
         this.worker = worker;
         this.task = task;
         this.loggedTime = loggedTime;
         this.date = date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getWorker() {

@@ -46,4 +46,9 @@ export class TaskService {
     const url = `${this.apiUrl}/update`
     return this.http.post<any>(url, task)
   }
+
+  getUserTasks(): Observable<any>{
+    const url = `${this.apiUrl}/user-tasks`
+    return this.http.get(url)
+  }
 }

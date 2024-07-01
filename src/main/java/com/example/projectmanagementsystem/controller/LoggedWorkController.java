@@ -23,6 +23,11 @@ public class LoggedWorkController {
         return ResponseEntity.ok().body(loggedWorkService.getUserLoggedWork());
     }
 
+    @GetMapping("/user-week-logged")
+    public ResponseEntity<List<LoggedWorkDTO>> getLastWeekLoggedWork(){
+        return ResponseEntity.ok().body(loggedWorkService.getLastWeekLoggedWork());
+    }
+
     @PostMapping("/add-logged")
     public ResponseEntity<List<LoggedWorkDTO>> addLoggedWork(@RequestBody LoggedWorkRequest loggedWorkDTO){
         return ResponseEntity.ok().body(loggedWorkService.addLoggedWork(loggedWorkDTO));

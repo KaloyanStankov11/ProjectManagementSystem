@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,6 +27,14 @@ public class LoggedWorkService {
     public List<LoggedWorkDTO> getUserLoggedWork(){
         AppUser user = userService.getUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return loggedWorkRepository.getLoggedWorkByWorker(user).stream().map(LoggedWork::toLoggedWorkDTO).toList();
+    }
+
+    public List<LoggedWorkDTO> getLastWeekLoggedWork(){
+        AppUser user = userService.getUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        int day = LocalDate.now().getDayOfWeek().getValue();
+        LocalDate startDate = LocalDate.now().minusWeeks(1).minusDays(day-1);
+        LocalDate endDate = LocalDate.now().minusWeeks(1).plusDays(5-day);
+        return loggedWorkRepository.getLoggedWorkByWorkerAndDateAfterAndDateBefore(user, startDate, endDate).stream().map(LoggedWork::toLoggedWorkDTO).toList();
     }
 
     public List<LoggedWorkDTO> getTaskLoggedWork(Task task){

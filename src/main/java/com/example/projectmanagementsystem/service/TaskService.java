@@ -119,4 +119,9 @@ public class TaskService {
                 .append(days)
                 .toString();
     }
+
+    public List<TaskDTO> getUserTasks(){
+        AppUser user = userService.getUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return taskRepository.findAllByAssignee(user).stream().map(Task::toTaskDTO).toList();
+    }
 }

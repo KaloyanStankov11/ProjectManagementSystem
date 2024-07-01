@@ -19,11 +19,11 @@
         <table mat-table [dataSource]="loggedWork">
           <ng-container matColumnDef="TASK">
             <th *matHeaderCellDef mat-header-cell>Task</th>
-            <td *matCellDef="let logged" mat-cell>{{logged.task}}</td>
+            <td *matCellDef="let logged" mat-cell>{{logged.task.caption}}</td>
           </ng-container>
           <ng-container matColumnDef="TIME">
             <th *matHeaderCellDef mat-header-cell>Time</th>
-            <td *matCellDef="let logged" mat-cell>{{logged.time}}</td>
+            <td *matCellDef="let logged" mat-cell>{{logged.loggedTime.number + " " + logged.loggedTime.unit}}</td>
           </ng-container>
           <ng-container matColumnDef="DATE">
             <th *matHeaderCellDef mat-header-cell>Date</th>

@@ -25,4 +25,9 @@ export class LoggedService {
     const url = `${this.apiUrl}/delete-logged/${id}`
     return this.http.delete(url)
   }
+
+  getUserLastWeekLoggedWork(): Observable<LoggedWork[]>{
+    const url = `${this.apiUrl}/user-week-logged`
+    return this.http.get<LoggedWork[]>(url)
+  }
 }

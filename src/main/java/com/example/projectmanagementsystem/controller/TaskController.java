@@ -57,4 +57,9 @@ public class TaskController {
     public ResponseEntity<String> getTaskLoggedWork(@PathVariable Long taskId){
         return ResponseEntity.ok().body(taskService.getTaskLoggedWork(taskId));
     }
+
+    @GetMapping("/user-tasks")
+    public ResponseEntity<List<TaskDTO>> getUserTasks(){
+        return ResponseEntity.ok().body(taskService.getUserTasks());
+    }
 }

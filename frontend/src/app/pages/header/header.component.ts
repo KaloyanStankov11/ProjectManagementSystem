@@ -18,21 +18,24 @@ export class HeaderComponent implements OnInit{
   selectedProject: FormControl = new FormControl
 
   constructor(private router: Router, private navBarService: NavbarService, private userService: UserService, private projectService: ProjectService) {
-    this.subscription.push(
-      this.navBarService.showNavBar.subscribe((value) => {
-        this.showNavbar = value
-      })
-    )
+
     this.subscription.push(this.selectedProject.valueChanges.subscribe(value => {
       this.projectService.setSelectedProject(value)
     }))
   }
 
   ngOnInit(): void {
-    this.projectService.getAllProjects().subscribe(data =>{
-      this.projects = data.map(it => it.projectName)
-      this.selectedProject.setValue(this.projects[1])
-    })
+    this.subscription.push(
+      this.navBarService.showNavBar.subscribe((value) => {
+        this.showNavbar = value
+        if(value){
+          this.projectService.getAllProjects().subscribe(data =>{
+            this.projects = data.map(it => it.projectName)
+            this.selectedProject.setValue(this.projects[1])
+          })
+        }
+      })
+    )
   }
 
   viewProfile() {

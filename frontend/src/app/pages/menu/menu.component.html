@@ -1,6 +1,9 @@
-<mat-toolbar color="accent">
+<mat-toolbar color="accent" *ngIf="showNavBar">
   <div *ngFor="let item of menuItems">
     <button mat-button [routerLink]="item.link">{{ item.label }}</button>
+  </div>
+  <div *ngIf="showManagerPanel">
+    <button mat-button [routerLink]="managerPanelLink">Admin Panel</button>
   </div>
 </mat-toolbar>
 

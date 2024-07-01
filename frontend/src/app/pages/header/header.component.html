@@ -3,7 +3,7 @@
     <div class="col-3">
       <h1>Project Management Application</h1>
     </div>
-    <div class="col-6">
+    <div class="col-6" *ngIf="showNavbar">
       <button mat-raised-button class="select-button" color="accent">
         <mat-select [formControl]="selectedProject" class="select-option">
           <mat-option *ngFor="let project of projects" [value]="project" class="select-option">{{project}}</mat-option>

@@ -16,7 +16,7 @@ export class UserService {
 
   login(username: string, password: string): Observable<LoginResponse> {
     window.localStorage.clear()
-    let user = new AppUser(username, null, password, null, null, null, null, null)
+    let user = new AppUser(username, null, password, null, null, null)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'User-Information': JSON.stringify(user)
@@ -34,8 +34,8 @@ export class UserService {
     return this.http.get<AppUser>(url)
   }
 
-  deleteUser(userId: number): Observable<any> {
-    const url = `${this.apiUrl}/users/delete-user/${userId}`
+  deleteUser(username: string): Observable<any> {
+    const url = `${this.apiUrl}/users/delete-user/${username}`
     return this.http.delete(url)
   }
 

@@ -1,6 +1,6 @@
 <div class="content">
   <mat-card>
-    <button class="action-button pull-right" color="accent" mat-mini-fab>
+    <button class="action-button pull-right" color="accent" mat-mini-fab (click)="goToAddWorker()">
       <em class="material-icons no-padding">add</em>
     </button>
     <div class="scrollable-container">
@@ -15,18 +15,18 @@
         </ng-container>
         <ng-container matColumnDef="PHONE">
           <th *matHeaderCellDef mat-header-cell>Phone</th>
-          <td *matCellDef="let worker" mat-cell>{{worker.phone}}</td>
+          <td *matCellDef="let worker" mat-cell>{{worker.phoneNumber}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ROLE">
+          <th *matHeaderCellDef mat-header-cell>Role</th>
+          <td *matCellDef="let worker" mat-cell>{{worker.userRole.roleName}}</td>
         </ng-container>
         <ng-container matColumnDef="ACTIONS">
           <th *matHeaderCellDef mat-header-cell>Actions</th>
           <td *matCellDef="let worker" mat-cell>
             <button mat-icon-button
-                    matTooltip="Delete worker">
+                    matTooltip="Delete worker" (click)="deleteWorker(worker)">
               <mat-icon color="primary">delete</mat-icon>
-            </button>
-            <button mat-icon-button
-                    matTooltip="Edit worker">
-              <mat-icon color="primary">visibility</mat-icon>
             </button>
           </td>
         </ng-container>

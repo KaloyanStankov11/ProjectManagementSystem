@@ -34,6 +34,8 @@ import { AddLogModalComponent } from './pages/logged-work/add-log-modal/add-log-
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatNativeDateModule} from "@angular/material/core";
+import { AddWorkerComponent } from './pages/workers/add-worker/add-worker.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -48,31 +50,33 @@ import {MatNativeDateModule} from "@angular/material/core";
     WorkersComponent,
     ManageProjectsComponent,
     CreateTaskComponent,
-    AddLogModalComponent
+    AddLogModalComponent,
+    AddWorkerComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatListModule,
-        MatButtonToggleModule,
-        MatSelectModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatTooltipModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatChipsModule,
-        MatTableModule,
-        MatDatepickerModule,
-      MatDialogModule,
-      MatNativeDateModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule,
+    MatCheckboxModule
+  ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: BasicHttpInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })

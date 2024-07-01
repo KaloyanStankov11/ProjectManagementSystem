@@ -13,6 +13,7 @@ import {CreateTaskComponent} from "./pages/tasks/create-task/create-task.compone
 import {UsersResolver} from "./resolver/UsersResolver";
 import {ProjectsResolver} from "./resolver/ProjectsResolver";
 import {LoggedWorkResolver} from "./resolver/LoggedWorkResolver";
+import {AddWorkerComponent} from "./pages/workers/add-worker/add-worker.component";
 
 const routes: Routes = [{
   path: '',
@@ -23,12 +24,12 @@ const routes: Routes = [{
   {path: 'tasks', component: TasksComponent, resolve: { tasks: TasksResolver }},
   {path: 'home', component: HomeComponent},
   {path: 'logged', component: LoggedWorkComponent, resolve: { tasks: TasksResolver, logged: LoggedWorkResolver }},
-  {path: 'workers', component: WorkersComponent},
+  {path: 'workers', component: WorkersComponent, resolve: {users: UsersResolver}},
   {path: 'manage-projects', component: ManageProjectsComponent},
   {path: 'task-overview', component: TaskOverviewComponent},
   {path: 'create-task', component: CreateTaskComponent, resolve: {users: UsersResolver, projects: ProjectsResolver}},
-  {path: 'edit-task', component: CreateTaskComponent, resolve: {users: UsersResolver, projects: ProjectsResolver}}
-  // {path: 'add-worker', component: AddWorkerComponent},
+  {path: 'edit-task', component: CreateTaskComponent, resolve: {users: UsersResolver, projects: ProjectsResolver}},
+  {path: 'add-worker', component: AddWorkerComponent, resolve: {projects: ProjectsResolver}},
   // {path: 'edit-worker', component: EditWorkerComponent},
   // {path: 'projects', component: ProjectComponent, resolve: {projects: ProjectResolver}},
   // {path: 'logged-time', component: HomeComponent},

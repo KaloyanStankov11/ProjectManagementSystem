@@ -1,0 +1,37 @@
+<div class="col-6">
+<mat-card>
+  <mat-card-title>User Details</mat-card-title>
+  <form [formGroup]="userFormGroup">
+    <div class="row">
+      <div class="col-10">
+        <mat-form-field class="full-width">
+          <mat-label>Username:</mat-label>
+          <input formControlName="username" matInput type="text">
+        </mat-form-field>
+      </div>
+      <div class="col-10">
+        <mat-form-field class="full-width">
+          <mat-label>Email:</mat-label>
+          <input formControlName="email" matInput type="text">
+        </mat-form-field>
+      </div>
+      <div class="col-10">
+        <mat-form-field class="full-width">
+          <mat-label>Phone Number:</mat-label>
+          <input formControlName="phoneNumber" matInput type="text">
+        </mat-form-field>
+      </div>
+      <div class="col-10">
+        <mat-label>Is Manager:</mat-label>
+        <mat-checkbox formControlName="isManager"></mat-checkbox>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4 pull-right">
+        <button (click)="registerUser()" color="primary" mat-raised-button>Create</button>
+        <button (click)="navigateBack()" class="pull-right" color="accent" mat-raised-button>Back</button>
+      </div>
+    </div>
+  </form>
+</mat-card>
+</div>

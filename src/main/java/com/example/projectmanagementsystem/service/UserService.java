@@ -24,4 +24,9 @@ public class UserService {
     public AppUser getUSerById(Long id){
         return userRepository.getReferenceById(id);
     }
+    public List<AppUserDTO> deleteUser(String username){
+        AppUser user = userRepository.findAppUserByUsername(username);
+        userRepository.delete(user);
+        return getAllUsers();
+    }
 }

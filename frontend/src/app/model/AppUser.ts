@@ -7,19 +7,15 @@ export class AppUser{
   password: string;
   phoneNumber: string | null;
   userRole: UserRole | null;
-  managedProjects: Project[] | null;
-  workingProjects: Project[] | null;
   loggedWork: LoggedWork[] | null;
 
 
-  constructor(username: string, email: string | null, password: string, phoneNumber: string | null, userRole: UserRole | null, managedProjects: Project[] | null, workingProjects: Project[] | null, loggedWork: LoggedWork[] | null) {
+  constructor(username: string, email: string | null, password: string, phoneNumber: string | null, userRole: UserRole | null, loggedWork: LoggedWork[] | null) {
     this.username = username;
     this.email = email;
     this.password = password;
     this.phoneNumber = phoneNumber;
     this.userRole = userRole;
-    this.managedProjects = managedProjects;
-    this.workingProjects = workingProjects;
     this.loggedWork = loggedWork;
   }
 }

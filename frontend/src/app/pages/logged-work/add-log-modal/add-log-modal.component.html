@@ -13,6 +13,11 @@
     </mat-form-field>
     <mat-form-field>
       <label>Date: </label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
   </mat-card>
 </form>

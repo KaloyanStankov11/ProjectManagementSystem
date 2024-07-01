@@ -3,6 +3,8 @@ package com.example.projectmanagementsystem.model;
 
 
 import com.example.projectmanagementsystem.model.dto.LoggedWorkDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -14,6 +16,7 @@ public class LoggedWork extends _BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "app_user_id")
+    @JsonBackReference
     private AppUser worker;
     @ManyToOne
     @JoinColumn(name = "task_id")
@@ -35,7 +38,7 @@ public class LoggedWork extends _BaseEntity{
 
     public LoggedWorkDTO toLoggedWorkDTO(){
         return new LoggedWorkDTO(
-                this.worker.toAppUserDTO(),
+                this.worker.getUsername(),
                 this.task.toTaskDTO(),
                 new TimeMeasure(this.loggedTimeNumber, this.loggedTimeUnit),
                 this.date

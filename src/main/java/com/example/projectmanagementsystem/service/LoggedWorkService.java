@@ -2,6 +2,7 @@ package com.example.projectmanagementsystem.service;
 
 import com.example.projectmanagementsystem.model.AppUser;
 import com.example.projectmanagementsystem.model.LoggedWork;
+import com.example.projectmanagementsystem.model.LoggedWorkRequest;
 import com.example.projectmanagementsystem.model.Task;
 import com.example.projectmanagementsystem.model.dto.LoggedWorkDTO;
 import com.example.projectmanagementsystem.repository.LoggedWorkRepository;
@@ -31,14 +32,14 @@ public class LoggedWorkService {
         return loggedWorkRepository.getLoggedWorkByTask(task).stream().map(LoggedWork::toLoggedWorkDTO).toList();
     }
 
-    public void addLoggedWork(LoggedWorkDTO loggedWorkDTO){
+    public void addLoggedWork(LoggedWorkRequest loggedWorkDTO){
         AppUser user = userService.getUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        Task task = taskRepository.getReferenceById(loggedWorkDTO.getWorker().getId());
+        Task task = taskRepository.getReferenceById(loggedWorkDTO.getTask().getId());
         LoggedWork loggedWork = new LoggedWork(
                 user,
                 task,
-                loggedWorkDTO.getLoggedTime().getNumber(),
-                loggedWorkDTO.getLoggedTime().getUnit(),
+                loggedWorkDTO.getLoggedTimeNumber(),
+                loggedWorkDTO.getLoggedTimeUnit(),
                 loggedWorkDTO.getDate()
         );
         loggedWorkRepository.save(loggedWork);

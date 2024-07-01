@@ -12,6 +12,7 @@ import {TaskOverviewComponent} from "./pages/tasks/task-overview/task-overview.c
 import {CreateTaskComponent} from "./pages/tasks/create-task/create-task.component";
 import {UsersResolver} from "./resolver/UsersResolver";
 import {ProjectsResolver} from "./resolver/ProjectsResolver";
+import {LoggedWorkResolver} from "./resolver/LoggedWorkResolver";
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +22,7 @@ const routes: Routes = [{
   {path: 'login', component: LoginComponent},
   {path: 'tasks', component: TasksComponent, resolve: { tasks: TasksResolver }},
   {path: 'home', component: HomeComponent},
-  {path: 'logged', component: LoggedWorkComponent},
+  {path: 'logged', component: LoggedWorkComponent, resolve: { tasks: TasksResolver, logged: LoggedWorkResolver }},
   {path: 'workers', component: WorkersComponent},
   {path: 'manage-projects', component: ManageProjectsComponent},
   {path: 'task-overview', component: TaskOverviewComponent},

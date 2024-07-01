@@ -1,22 +1,22 @@
 <div class="content">
   <mat-card>
-    <button class="action-button pull-right" color="accent" mat-mini-fab>
+    <button class="action-button pull-right" color="accent" mat-mini-fab (click)="addLog()">
       <em class="material-icons no-padding">add</em>
     </button>
     <div class="scrollable-container">
 <table mat-table [dataSource]="loggedWork">
   <ng-container matColumnDef="TASK">
     <th *matHeaderCellDef mat-header-cell>Task</th>
-    <td *matCellDef="let logged" mat-cell>{{logged.task}}</td>
+    <td *matCellDef="let logged" mat-cell>{{logged.task.caption}}</td>
   </ng-container>
   <ng-container matColumnDef="TIME">
     <th *matHeaderCellDef mat-header-cell>Time</th>
-    <td *matCellDef="let logged" mat-cell>{{logged.time}}</td>
+    <td *matCellDef="let logged" mat-cell>{{logged.loggedTimeNumber + " " + logged.loggedTimeUnit}}</td>
   </ng-container>
-  <ng-container matColumnDef="TIME_LEFT">
-    <th *matHeaderCellDef mat-header-cell>Time Left</th>
-    <td *matCellDef="let logged" mat-cell>{{logged.timeLeft}}</td>
-  </ng-container>
+<!--  <ng-container matColumnDef="TIME_LEFT">-->
+<!--    <th *matHeaderCellDef mat-header-cell>Time Left</th>-->
+<!--    <td *matCellDef="let logged" mat-cell>{{logged.timeLeft}}</td>-->
+<!--  </ng-container>-->
   <ng-container matColumnDef="DATE">
     <th *matHeaderCellDef mat-header-cell>Date</th>
     <td *matCellDef="let logged" mat-cell>{{logged.date}}</td>
@@ -24,13 +24,9 @@
   <ng-container matColumnDef="ACTIONS">
     <th *matHeaderCellDef mat-header-cell>Actions</th>
     <td *matCellDef="let task" mat-cell>
-      <button (click)="deleteTask()" mat-icon-button
-              matTooltip="Delete task">
+      <button (click)="deleteLog()" mat-icon-button
+              matTooltip="Delete log">
         <mat-icon color="primary">delete</mat-icon>
-      </button>
-      <button (click)="editTask()" mat-icon-button
-              matTooltip="Edit task">
-        <mat-icon color="primary">edit</mat-icon>
       </button>
     </td>
   </ng-container>

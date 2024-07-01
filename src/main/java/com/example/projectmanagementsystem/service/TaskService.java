@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class TaskService {
@@ -85,15 +86,15 @@ public class TaskService {
 
     private String transformLoggedWork(List<LoggedWorkDTO> loggedWork){
         int days = loggedWork.stream()
-                .filter(log -> log.getLoggedTime().getUnit() == "day")
+                .filter(log -> Objects.equals(log.getLoggedTime().getUnit(), "day"))
                 .mapToInt(log -> log.getLoggedTime().getNumber())
                 .sum();
         int weeks = loggedWork.stream()
-                .filter(log -> log.getLoggedTime().getUnit() == "week")
+                .filter(log -> Objects.equals(log.getLoggedTime().getUnit(), "week"))
                 .mapToInt(log -> log.getLoggedTime().getNumber())
                 .sum();
         int months = loggedWork.stream()
-                .filter(log -> log.getLoggedTime().getUnit() == "month")
+                .filter(log -> Objects.equals(log.getLoggedTime().getUnit(), "month"))
                 .mapToInt(log -> log.getLoggedTime().getNumber())
                 .sum();
         StringBuilder stringBuilder = new StringBuilder();

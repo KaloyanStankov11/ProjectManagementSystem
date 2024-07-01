@@ -1,6 +1,8 @@
 package com.example.projectmanagementsystem.model;
 
 import com.example.projectmanagementsystem.model.dto.AppUserDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,6 +17,7 @@ public class AppUser extends _BaseEntity{
     @JoinColumn(name = "user_role_id")
     private UserRole userRole;
     @OneToMany(mappedBy = "worker", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<LoggedWork> loggedWork;
 
     public AppUserDTO toAppUserDTO(){

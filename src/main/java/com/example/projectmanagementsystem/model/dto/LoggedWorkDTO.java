@@ -11,23 +11,23 @@ import java.time.LocalDate;
 
 public class LoggedWorkDTO {
 
-    private AppUserDTO worker;
+    private String worker;
     private TaskDTO task;
     private TimeMeasure loggedTime;
     private LocalDate date;
 
-    public LoggedWorkDTO(AppUserDTO worker, TaskDTO task, TimeMeasure loggedTime, LocalDate date) {
+    public LoggedWorkDTO(String worker, TaskDTO task, TimeMeasure loggedTime, LocalDate date) {
         this.worker = worker;
         this.task = task;
         this.loggedTime = loggedTime;
         this.date = date;
     }
 
-    public AppUserDTO getWorker() {
+    public String getWorker() {
         return worker;
     }
 
-    public void setWorker(AppUserDTO worker) {
+    public void setWorker(String worker) {
         this.worker = worker;
     }
 

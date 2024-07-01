@@ -1,37 +1,46 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoggedWork} from "../../model/LoggedWork";
 import {MatDialog} from "@angular/material/dialog";
 import {AddLogModalComponent} from "./add-log-modal/add-log-modal.component";
 import {take} from "rxjs";
+import {Task} from "../../model/Task";
+import {ActivatedRoute} from "@angular/router";
+import {LoggedService} from "../../service/logged.service";
+import {Project} from "../../model/Project";
 
 @Component({
   selector: 'app-logged-work',
   templateUrl: './logged-work.component.html',
   styleUrls: ['./logged-work.component.scss']
 })
-export class LoggedWorkComponent {
+export class LoggedWorkComponent implements OnInit{
   loggedWork: LoggedWork[]
+  tasks: Task[]
+  loggedWorkTableColumns = ["TASK", "TIME", "DATE", "ACTIONS"]
 
-  loggedWorkTableColumns = ["TASK", "TIME", "TIME_LEFT", "DATE", "ACTIONS"]
-
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, public loggedService: LoggedService) {
   }
 
+  ngOnInit(): void {
+    this.tasks = this.route.snapshot.data["tasks"]
+    this.loggedWork = this.route.snapshot.data["logged"]
+  }
   addLog(){
     this.dialog.open(AddLogModalComponent,{
       data: {
         title: "Add log for work",
-        tasks: []
+        tasks: this.tasks
       }
     }).afterClosed()
       .pipe(take(1))
-      .subscribe()
+      .subscribe(response =>{
+        if(response){
+          this.loggedService.addLoggedWork(response).subscribe()
+        }
+      })
   }
-  deleteTask() {
+  deleteLog() {
 
   }
 
-  editTask() {
-
-  }
 }

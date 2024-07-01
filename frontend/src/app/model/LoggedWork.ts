@@ -20,3 +20,17 @@ export class LoggedWork{
     this.date = date;
   }
 }
+
+export class LogWorkRequest{
+  task: Task;
+  loggedTimeNumber: number;
+  loggedTimeUnit: string;
+  date: Date;
+
+  constructor(task: Task, loggedTimeNumber: number, loggedTimeUnit: string, date: Date) {
+    this.task = task;
+    this.loggedTimeNumber = loggedTimeNumber;
+    this.loggedTimeUnit = loggedTimeUnit;
+    this.date = date;
+  }
+}

@@ -27,6 +27,5 @@ export class MenuComponent{
     { label: 'Tasks', link: '/tasks' },
     { label: 'Logged Work', link: '/logged' },
     { label: 'Workers', link: '/workers' },
-    { label: 'Admin Panel', link: '/manage-projects' },
   ];
 }

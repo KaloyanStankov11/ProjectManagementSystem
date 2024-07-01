@@ -42,7 +42,7 @@ export class LoginComponent  implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.navbarService.display()
-    if (this.userRole == "MANAGER" || this.userRole == "OWNER") {
+    if (this.userRole === "MANAGER" || this.userRole === "OWNER") {
       this.navbarService.displayManagerPanel()
     } else {
       this.navbarService.hideManagerPanel()

@@ -3,6 +3,8 @@ import {Task} from "../../model/Task";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TaskService} from "../../service/task.service";
 import {ProjectService} from "../../service/project.service";
+import {NavbarService} from "../../service/navbar.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-tasks',
@@ -13,12 +15,21 @@ export class TasksComponent implements OnInit{
   tasks: Task[]
   columnsToDisplay = ["CAPTION", "CREATED", "PROJECT", "STATUS", "ASSIGNEE", "ACTIONS"]
   activeProject: string
-
-  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService, private taskService: TaskService) {
+  isManager: boolean
+  subscribers: Subscription[] = []
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private projectService: ProjectService,
+    private taskService: TaskService,
+    private navBarService: NavbarService) {
   }
 
   ngOnInit(): void {
     // this.tasks = this.route.snapshot.data["tasks"]
+    this.subscribers.push(this.navBarService.showManagerPanel.subscribe((value) => {
+      this.isManager = value
+    }))
     this.activeProject = this.projectService.getSelectedProject()
     this.loadProjects()
     this.projectService.selectedProject$.subscribe(newProject =>{

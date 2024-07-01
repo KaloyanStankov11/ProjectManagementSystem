@@ -1,6 +1,6 @@
 <div class="content">
       <mat-card>
-          <button (click)="goToAddTask()" class="action-button pull-right" color="accent" mat-mini-fab>
+          <button *ngIf="isManager" (click)="goToAddTask()" class="action-button pull-right" color="accent" mat-mini-fab>
             <em class="material-icons no-padding">add</em>
           </button>
         <div class="scrollable-container">
@@ -28,11 +28,11 @@
             <ng-container matColumnDef="ACTIONS">
               <th *matHeaderCellDef mat-header-cell>Actions</th>
               <td *matCellDef="let task" mat-cell>
-                <button (click)="deleteTask(task)" mat-icon-button
+                <button *ngIf="isManager" (click)="deleteTask(task)" mat-icon-button
                         matTooltip="Delete task">
                   <mat-icon color="primary">delete</mat-icon>
                 </button>
-                <button (click)="editTask(task)" mat-icon-button
+                <button *ngIf="isManager" (click)="editTask(task)" mat-icon-button
                         matTooltip="Edit task">
                   <mat-icon color="primary">edit</mat-icon>
                 </button>

@@ -1,0 +1,18 @@
+<form [formGroup]="loggedWork">
+  <mat-card class="card-height">
+    <mat-card-title>{{data.title}}</mat-card-title>
+    <mat-form-field class="inside-margin">
+      <label>Time: </label>
+      <input formControlName="time" matInput>
+    </mat-form-field>
+    <mat-form-field class="inside-margin">
+      <label>Task: </label>
+      <mat-select formControlName="task">
+        <mat-option *ngFor="let task of data.tasks" [value]="task">{{task.caption}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Date: </label>
+    </mat-form-field>
+  </mat-card>
+</form>

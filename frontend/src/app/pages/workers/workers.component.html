@@ -1,0 +1,38 @@
+<div class="content">
+  <mat-card>
+    <button class="action-button pull-right" color="accent" mat-mini-fab>
+      <em class="material-icons no-padding">add</em>
+    </button>
+    <div class="scrollable-container">
+      <table mat-table [dataSource]="workers">
+        <ng-container matColumnDef="USERNAME">
+          <th *matHeaderCellDef mat-header-cell>Username</th>
+          <td *matCellDef="let worker" mat-cell>{{worker.username}}</td>
+        </ng-container>
+        <ng-container matColumnDef="EMAIL">
+          <th *matHeaderCellDef mat-header-cell>Email</th>
+          <td *matCellDef="let worker" mat-cell>{{worker.email}}</td>
+        </ng-container>
+        <ng-container matColumnDef="PHONE">
+          <th *matHeaderCellDef mat-header-cell>Phone</th>
+          <td *matCellDef="let worker" mat-cell>{{worker.phone}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ACTIONS">
+          <th *matHeaderCellDef mat-header-cell>Actions</th>
+          <td *matCellDef="let worker" mat-cell>
+            <button mat-icon-button
+                    matTooltip="Delete worker">
+              <mat-icon color="primary">delete</mat-icon>
+            </button>
+            <button mat-icon-button
+                    matTooltip="Edit worker">
+              <mat-icon color="primary">visibility</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
+      </table>
+    </div>
+  </mat-card>
+</div>

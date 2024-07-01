@@ -1,0 +1,39 @@
+<ng-container>
+<div class="row content-card">
+  <div class="col-6 content-card">
+  <mat-card class="content-card">
+    <mat-card-title>Your Tasks</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let task of tasks">
+          {{task.caption}}
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="col-6 content-card">
+    <mat-card class="content-card">
+      <mat-card-title>Last Week Logged Work</mat-card-title>
+      <mat-card-content>
+        <table mat-table [dataSource]="loggedWork">
+          <ng-container matColumnDef="TASK">
+            <th *matHeaderCellDef mat-header-cell>Task</th>
+            <td *matCellDef="let logged" mat-cell>{{logged.task}}</td>
+          </ng-container>
+          <ng-container matColumnDef="TIME">
+            <th *matHeaderCellDef mat-header-cell>Time</th>
+            <td *matCellDef="let logged" mat-cell>{{logged.time}}</td>
+          </ng-container>
+          <ng-container matColumnDef="DATE">
+            <th *matHeaderCellDef mat-header-cell>Date</th>
+            <td *matCellDef="let logged" mat-cell>{{logged.date}}</td>
+          </ng-container>
+          <tr *matHeaderRowDef="loggedWorkTableColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: loggedWorkTableColumns" mat-row></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+</ng-container>

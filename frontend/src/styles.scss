@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+@use "sass:math";
+@import "variables";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-nav-list.list-horizontal {
+  padding: 0;
+  .mat-list-item {
+    display: inline-block;
+    height: auto;
+    width: auto;
+  }
+}
+
+.primary-color {
+  color: $primary-color !important;
+}
+
+.accent-color {
+  color: $accent-color !important;
+}
+
+.error-color {
+  color: $error-color !important;
+}
+
+.centered-content {
+  justify-content: center;
+}
+
+.full-width {
+  width: 100%;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.pull-right {
+  margin-left: auto;
+  float: right;
+}
+
+.select-button {
+  margin-left: 10px;
+}
+
+.select-option{
+  min-width: 100px;
+}
+
+.spacer{
+  margin-bottom: 20px;
+}
+
+.action-button {
+  position: absolute;
+  top: - math.div($vhm-margin,2);
+  right: math.div($vhm-margin, 2);
+}
+
+.scrollable-container {
+  overflow-y: auto;
+}
+
+.content{
+  height: 100vh;
+}
+
+.card-height{
+  height: 570px;
+}
+
+.main-content{
+  height: calc(100vh - 150px);
+  margin: 20px;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.align-bottom-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.customTextArea{
+  resize: none !important;
+}
+
+.inside-margin{
+  margin: 5px;
+}
+
+//.colored-card{
+//  //background-color: #8D8F8C !important;
+//  border-color: $primary-color !important;
+//  border-radius: 2px !important;
+//}

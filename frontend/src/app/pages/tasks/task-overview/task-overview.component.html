@@ -1,0 +1,41 @@
+<form [formGroup]="taskFormGroup">
+  <div class="row">
+    <div class="col-9">
+      <mat-card class="card-height">
+        <mat-form-field class="inside-margin">
+          <label>Title: </label>
+          <input formControlName="title" matInput [readonly]="true">
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Description: </label>
+          <textarea class="customTextArea" formControlName="description" matInput rows="16"
+                    [readonly]="true"></textarea>
+        </mat-form-field>
+      </mat-card>
+    </div>
+    <div class="col-3 full-height">
+      <mat-card class="card-height">
+        <mat-form-field class="inside-margin">
+          <label>Assignee: </label>
+          <input formControlName="assignee" matInput [readonly]="true">
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Creator: </label>
+          <input formControlName="creator" matInput [readonly]="true">
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Project: </label>
+          <input formControlName="project" matInput [readonly]="true">
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Estimation Time: </label>
+          <input formControlName="estimationTime" matInput [readonly]="true">
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Logged Time: </label>
+          <input [formControl]="loggedWork" matInput [readonly]="true">
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </div>
+</form>

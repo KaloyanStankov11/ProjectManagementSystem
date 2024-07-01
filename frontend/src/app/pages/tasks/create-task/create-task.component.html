@@ -1,0 +1,44 @@
+<form [formGroup]="taskFormGroup">
+  <div class="row">
+    <div class="col-9">
+      <mat-card class="card-height">
+        <mat-form-field class="inside-margin">
+          <label>Title: </label>
+          <input formControlName="title" matInput>
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Description: </label>
+          <textarea class="customTextArea" formControlName="description" matInput rows="16"></textarea>
+        </mat-form-field>
+      </mat-card>
+    </div>
+    <div class="col-3 full-height">
+      <mat-card class="card-height">
+        <mat-form-field class="inside-margin">
+          <label>Assignee: </label>
+          <mat-select formControlName="assignee">
+            <mat-option *ngFor="let user of users" [value]="user">{{user.username}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Project: </label>
+          <mat-select formControlName="project">
+            <mat-option *ngFor="let project of projects" [value]="project.projectName">{{project.projectName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="isEditMode" class="inside-margin">
+          <label>Status: </label>
+          <mat-select formControlName="taskStatus">
+            <mat-option *ngFor="let status of taskStatuses" [value]="status">{{status}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="inside-margin">
+          <label>Estimation Time: </label>
+          <input formControlName="estimationTime" matInput>
+        </mat-form-field>
+        <button mat-raised-button class="primary-color" (click)="createTask()">Save</button>
+        <button mat-raised-button (click)="navigateBack()">Cancel</button>
+      </mat-card>
+    </div>
+  </div>
+</form>

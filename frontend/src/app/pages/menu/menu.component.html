@@ -1,0 +1,6 @@
+<mat-toolbar color="accent">
+  <div *ngFor="let item of menuItems">
+    <button mat-button [routerLink]="item.link">{{ item.label }}</button>
+  </div>
+</mat-toolbar>
+

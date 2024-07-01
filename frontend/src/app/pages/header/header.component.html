@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <ng-container>
+    <div class="col-3">
+      <h1>Project Management Application</h1>
+    </div>
+    <div class="col-6">
+      <button mat-raised-button class="select-button" color="accent">
+        <mat-select [formControl]="selectedProject" class="select-option">
+          <mat-option *ngFor="let project of projects" [value]="project" class="select-option">{{project}}</mat-option>
+        </mat-select>
+      </button>
+    </div>
+    <div *ngIf="showNavbar" class="pull-right">
+      <button (click)="viewProfile()" [matTooltip]="'My profile'" aria-label="My profile" mat-icon-button>
+        <mat-icon>person</mat-icon>
+      </button>
+      <button (click)="logOut()" [matTooltip]="'Log out'" aria-label="Log out" mat-icon-button>
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+</mat-toolbar>

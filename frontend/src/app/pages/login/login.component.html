@@ -1,0 +1,36 @@
+<ng-container>
+  <div class="row centered-content">
+    <div class="col-6">
+      <mat-card class="full-width">
+        <mat-card-title class="centered-text">Login</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="loginFormGroup">
+            <div class="row pad">
+              <div class="col-12">
+                <mat-form-field>
+                  <mat-label>Username:</mat-label>
+                  <input formControlName="username" matInput type="text">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row pad">
+              <div class="col-12">
+                <mat-form-field>
+                  <mat-label>Password:</mat-label>
+                  <input formControlName="password" matInput type="password">
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
+          <div class="row pad centered-text">
+            <div class="col-12">
+              <button (click)="login()" color="primary" mat-raised-button>Login</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>
+
+

@@ -1,0 +1,50 @@
+<div class="content">
+      <mat-card>
+          <button (click)="goToAddTask()" class="action-button pull-right" color="accent" mat-mini-fab>
+            <em class="material-icons no-padding">add</em>
+          </button>
+        <div class="scrollable-container">
+          <table mat-table [dataSource]="tasks">
+            <ng-container matColumnDef="CAPTION">
+              <th *matHeaderCellDef mat-header-cell>Caption</th>
+              <td *matCellDef="let task" mat-cell>{{task.caption}}</td>
+            </ng-container>
+            <ng-container matColumnDef="CREATED">
+              <th *matHeaderCellDef mat-header-cell>Created</th>
+              <td *matCellDef="let task" mat-cell>{{task.creationTime}}</td>
+            </ng-container>
+            <ng-container matColumnDef="PROJECT">
+              <th *matHeaderCellDef mat-header-cell>Project</th>
+              <td *matCellDef="let task" mat-cell>{{task.project}}</td>
+            </ng-container>
+            <ng-container matColumnDef="STATUS">
+              <th *matHeaderCellDef mat-header-cell>Status</th>
+              <td *matCellDef="let task" mat-cell>{{task.taskStatus}}</td>
+            </ng-container>
+            <ng-container matColumnDef="ASSIGNEE">
+              <th *matHeaderCellDef mat-header-cell>Assignee</th>
+              <td *matCellDef="let task" mat-cell>{{task.assignee.username}}</td>
+            </ng-container>
+            <ng-container matColumnDef="ACTIONS">
+              <th *matHeaderCellDef mat-header-cell>Actions</th>
+              <td *matCellDef="let task" mat-cell>
+                <button (click)="deleteTask(task)" mat-icon-button
+                        matTooltip="Delete task">
+                  <mat-icon color="primary">delete</mat-icon>
+                </button>
+                <button (click)="editTask(task)" mat-icon-button
+                        matTooltip="Edit task">
+                  <mat-icon color="primary">edit</mat-icon>
+                </button>
+                <button (click)="overviewTask(task)" mat-icon-button
+                        matTooltip="Edit task">
+                  <mat-icon color="primary">visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+            <tr *matRowDef="let row; columns: columnsToDisplay" mat-row></tr>
+          </table>
+        </div>
+      </mat-card>
+</div>
